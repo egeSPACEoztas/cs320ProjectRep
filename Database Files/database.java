@@ -3,7 +3,7 @@
 import java.sql.*;
 import java.util.Scanner;
 
-public class database {
+public class Database {
 	private static final String URL = "jdbc:mysql://localhost:3306/cs320?useSSL=false&useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "XaX404d@nk=";
