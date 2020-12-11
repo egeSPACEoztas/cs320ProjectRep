@@ -1,4 +1,5 @@
 
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -75,3 +76,91 @@ public class database {
 		}
 	}
 
+//************************************************************
+	// Decreasing Quantity
+	public static void DBdecrementQuantity(int pid, int squantity) {
+		try {
+			establishConnection();
+			Statement statement = connection.createStatement();
+
+			String selectQuery = "(SELECT * FROM STOCKS WHERE pid=\"" + pid + "\")";
+			ResultSet rs = statement.executeQuery(selectQuery);
+
+			if (rs.getInt("squantity") >= squantity) {
+				String updateQuery = ("UPDATE STOCKS SET squantity = squantity -\"" + squantity + "\" WHERE pid=\""
+						+ pid + "\"");
+				statement.executeUpdate(updateQuery);
+				System.out.println("\nProcess completed!");
+
+			} else {
+				System.out.println("There are no enough products in stock.");
+			}
+
+			rs.close();
+			statement.close();
+			closeConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+//*******************************************************
+	// increase QUANTITY
+	public static void DBincrementQuantity(int pid, double squantity) {
+		try {
+			establishConnection();
+			Statement statement = connection.createStatement();
+
+			String updateQuery = "UPDATE STOCKS SET squantity= squantity + \"" + squantity + "\" WHERE pid= \"" + pid
+					+ "\")";
+			statement.executeUpdate(updateQuery);
+			System.out.println("\nProcess completed!");
+
+			statement.close();
+			closeConnection();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+//***************************************
+	// NEW PRODUCT with QUANTITY
+	public static void DBaddProduct(int pid, int squantity, String pbrand, double pprice, String pname) {
+		try {
+			establishConnection();
+			Statement statement = connection.createStatement();
+
+			String insertProduct = "INSERT INTO PRODUCT (pid, pbrand, pprice, pname) VALUES (\"" + pid + "\" ,\""
+					+ pbrand + "\" ,\"" + pprice + "\", \"" + pname + "\")";
+			statement.executeUpdate(insertProduct);
+
+			String insertQuantity = "INSERT INTO STOCKS (pid, squantity) VALUES (\"" + pid + "\", \"" + squantity
+					+ "\")";
+			statement.executeUpdate(insertQuantity);
+
+			System.out.println("\nProcess completed!");
+			statement.close();
+			closeConnection();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+// *******************************************************
+	// UPDATE PRICE
+	public static void DBupdatePrice(int pid, double pprice) {
+		try {
+			establishConnection();
+			Statement statement = connection.createStatement();
+
+			String updateQuery = "UPDATE PRODUCT SET pprice= \"" + pprice + "\" WHERE pid= \"" + pid + "\")";
+			statement.executeUpdate(updateQuery);
+			System.out.println("\nProcess completed!");
+
+			statement.close();
+			closeConnection();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+}
