@@ -49,9 +49,26 @@ public class formManager extends JFrame{
                 addproduct_price_textfield.setText("");
                 addproduct_quantity_textfield.setText("");
 
+
+
+
             }
         });
-        
-       
+        REMOVEButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String p_id = remove_pid_textfield.getText();
+
+                int id = Integer.parseInt(p_id);
+
+                Management.removeProduct(id);
+
+                remove_pid_textfield.setText("");
+
+
+            }
+        });
+
     }
 }
