@@ -69,6 +69,46 @@ public class formManager extends JFrame{
 
             }
         });
+        CHANGEQUANTITYButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String p_id,quantity;
+                p_id = changequantity_pid_textfield.getText();
+                quantity =changequantity_quantity_textfield.getText();
 
+                int id,quantity2;
+
+                id =Integer.parseInt(p_id);
+                quantity2 = Integer.parseInt(quantity);
+
+                Management.addProduct(id,quantity2);
+
+                changequantity_pid_textfield.setText("");
+                changequantity_quantity_textfield.setText("");
+            }
+        });
+        CHANGEPRICEButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String p_id,newPrice;
+
+                p_id = changeprice_pid_textfield.getText();
+                newPrice = changeprice_price_textfield.getText();
+
+                int id;
+                double newPrice2;
+
+                id =Integer.parseInt(p_id);
+                newPrice2=Double.parseDouble(newPrice);
+
+                Management.updatePrice(id,newPrice2);
+
+                changeprice_pid_textfield.setText("");
+                changeprice_pid_textfield.setText("");
+
+
+            }
+        });
     }
 }
