@@ -7,6 +7,7 @@ public class formPassword extends JFrame {
     private JPasswordField passwordField1;
     private JButton button_password;
     private JLabel label_password;
+    private JButton mainScreenButton;
 
     public formPassword(){
         add(panel_password);
@@ -26,7 +27,7 @@ public class formPassword extends JFrame {
 
                 if(password_field.equals(password_manager)){
                     //maganer formu çağıracak
-                    System.out.println("Selamun aleyküm");
+
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Invalid Password \nTry Again");
@@ -35,5 +36,13 @@ public class formPassword extends JFrame {
             }
         });
 
+        mainScreenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                formMain main = new formMain();
+                main.setVisible(true);
+            }
+        });
     }
 }
