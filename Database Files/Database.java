@@ -117,7 +117,7 @@ public class Database {
             Statement statement = connection.createStatement();
 
             String updateQuery = "UPDATE STOCKS SET squantity= squantity + \"" + squantity + "\" WHERE pid= \"" + pid
-                    + "\")";
+                    + "\"";
             statement.executeUpdate(updateQuery);
             System.out.println("\nProcess completed!");
 
@@ -158,7 +158,7 @@ public class Database {
             establishConnection();
             Statement statement = connection.createStatement();
 
-            String updateQuery = "UPDATE PRODUCT SET pprice= \"" + pprice + "\" WHERE pid= \"" + pid + "\")";
+            String updateQuery = "UPDATE PRODUCT SET pprice= \"" + pprice + "\" WHERE pid= \"" + pid + "\"";
             statement.executeUpdate(updateQuery);
             System.out.println("\nProcess completed!");
 
