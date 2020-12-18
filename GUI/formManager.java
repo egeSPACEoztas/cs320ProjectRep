@@ -18,6 +18,7 @@ public class formManager extends JFrame{
     private JTextField changeprice_pid_textfield;
     private JTextField changeprice_price_textfield;
     private JButton CHANGEPRICEButton;
+    private JButton mainScreenButton;
 
 
     public formManager()
@@ -108,6 +109,15 @@ public class formManager extends JFrame{
                 changeprice_pid_textfield.setText("");
 
 
+            }
+        });
+        mainScreenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+
+                formMain main = new formMain();
+                main.setVisible(true);
             }
         });
     }
