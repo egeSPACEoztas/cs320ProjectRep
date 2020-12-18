@@ -63,7 +63,7 @@ public class Database {
             establishConnection();
             Statement statement = connection.createStatement();
 
-            String delete_stocks = "SELECT * FROM STOCKS";
+            String delete_stocks = "SELECT * FROM STOCKS WHERE pid=\"" + pid + "\"";
             ResultSet rs = statement.executeQuery(delete_stocks);
 
             if (rs.next()) {
