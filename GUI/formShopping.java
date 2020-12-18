@@ -63,5 +63,52 @@ public class formShopping extends JFrame {
                 }
             }
         });
+        buyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Customer.buyProduct();
+                for (int i = model2.getRowCount() - 1; i >= 0; i--) {
+                    model2.removeRow(i);
+                }
+                JOptionPane.showMessageDialog(null, "Your shopping is completed \nHave a nice day");
+                setVisible(false);
+            }
+        });
+    }
+
+    private void createTable(){
+
+        Database.getProducts();
+        ArrayList<items> list = Database.products;
+
+        String mainCol[] = new String[]{"Product ID", "Name","Price","Brand","Quantity"};
+
+        model = new DefaultTableModel(null,mainCol);
+
+        Object [] row = new Object[5];
+
+        for(int i = 0 ; i < list.size(); i++){
+            row[0] = list.get(i).getPid();
+            row[1] = list.get(i).getName();
+            row[2] = list.get(i).getPrice();
+            row[3] = list.get(i).getBrand();
+            row[4] = list.get(i).getQuantity();
+
+            model.addRow(row);
+        }
+
+        table1.setModel(model);
+    }
+
+    private void createTable2(){
+
+        String mainCol[] = new String[]{"Product ID","Quantity","Price"};
+
+        DefaultTableModel model3 = new DefaultTableModel(null,mainCol);
+        this.model2 = new DefaultTableModel(null,mainCol);
+        table2.setModel(model2);
+
     }
 }
+
