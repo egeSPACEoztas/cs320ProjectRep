@@ -191,4 +191,27 @@ public class Database {
         }
         return price;
     }
+
+    public static int getQuantity(int id){
+        int quantityStock = 0;
+        try {
+
+            establishConnection();
+            Statement statement = connection.createStatement();
+            String selectQuery = "select squantity from stocks where pid=" +id;
+            ResultSet rs = statement.executeQuery(selectQuery);
+
+            if(rs.next()){
+                quantityStock += rs.getDouble("squantity");
+            }
+
+            rs.close();
+            statement.close();
+            closeConnection();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return quantityStock;
+    }
 }
