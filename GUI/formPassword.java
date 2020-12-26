@@ -26,7 +26,9 @@ public class formPassword extends JFrame {
                 password_field = new String(passwordField1.getPassword());
 
                 if(password_field.equals(password_manager)){
-                    //maganer formu çağıracak
+                    setVisible(false);
+                    formManager manager = new formManager();
+                    manager.setVisible(true);
 
                 }
                 else{
