@@ -29,7 +29,9 @@ public class formMain extends JFrame {
         button_customer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //customer framei çağıralacak
+                setVisible(false);
+                formShopping shopping = new formShopping();
+                shopping.setVisible(true);
             }
         });
 
