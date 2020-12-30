@@ -106,7 +106,7 @@ public class formManager extends JFrame{
                 Management.updatePrice(id,newPrice2);
 
                 changeprice_pid_textfield.setText("");
-                changeprice_pid_textfield.setText("");
+                changeprice_price_textfield.setText("");
 
 
             }
