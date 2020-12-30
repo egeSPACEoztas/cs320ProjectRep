@@ -115,11 +115,21 @@ public class Database {
 			establishConnection();
 			Statement statement = connection.createStatement();
 
-			String updateQuery = "UPDATE STOCKS SET squantity= squantity + \"" + squantity + "\" WHERE pid= \"" + pid
-					+ "\"";
-			statement.executeUpdate(updateQuery);
-			System.out.println("\nProcess completed!");
+			String selectQuery = "SELECT * FROM STOCKS WHERE pid=" + pid;
+			ResultSet rs = statement.executeQuery(selectQuery);
 
+			rs.next();
+			if (rs.next()) {
+				String updateQuery = "UPDATE STOCKS SET squantity= squantity + \"" + squantity + "\" WHERE pid= \""
+						+ pid + "\"";
+				statement.executeUpdate(updateQuery);
+				System.out.println("\nProcess completed!");
+
+			} else {
+				System.out.println("WARNING! In stocks, there is no product with the given product id. ");
+			}
+
+			rs.close();
 			statement.close();
 			closeConnection();
 		} catch (SQLException ex) {
