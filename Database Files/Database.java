@@ -118,7 +118,7 @@ public class Database {
 			String selectQuery = "SELECT * FROM STOCKS WHERE pid=" + pid;
 			ResultSet rs = statement.executeQuery(selectQuery);
 
-			rs.next();
+			
 			if (rs.next()) {
 				String updateQuery = "UPDATE STOCKS SET squantity= squantity + \"" + squantity + "\" WHERE pid= \""
 						+ pid + "\"";
