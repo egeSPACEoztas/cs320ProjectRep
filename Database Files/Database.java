@@ -117,7 +117,6 @@ public class Database {
 
 			String selectQuery = "SELECT * FROM STOCKS WHERE pid=" + pid;
 			ResultSet rs = statement.executeQuery(selectQuery);
-
 			
 			if (rs.next()) {
 				String updateQuery = "UPDATE STOCKS SET squantity= squantity + \"" + squantity + "\" WHERE pid= \""
@@ -228,5 +227,25 @@ public class Database {
 			ex.printStackTrace();
 		}
 		return quantityStock;
+	}
+	public static int getProductNum(){
+		int count = 0;
+		try {
+			establishConnection();
+			Statement statement = connection.createStatement();
+			String selectQuery = "select count(pid) from stocks";
+			ResultSet rs = statement.executeQuery(selectQuery);
+
+			if (rs.next()) {
+				count += rs.getInt("pid");
+			}
+			rs.close();
+			statement.close();
+			closeConnection();
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return count;
 	}
 }
